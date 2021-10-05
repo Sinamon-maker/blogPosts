@@ -1,5 +1,5 @@
-import Link from "next/link";
-import styled from "styled-components";
+import Link from 'next/link';
+import styled from 'styled-components';
 
 const PostContent = styled.li`
   border: 1px solid rgba(112, 148, 219, 0.1);
@@ -17,9 +17,9 @@ const PostContent = styled.li`
 
 const LinkContent = styled.a`
   color: #212112;
-font-size: 2rem;
-font-weight: bold;
-cursor: pointer;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
   &:hover,
   &:focus {
     color: #424224;
@@ -27,22 +27,21 @@ cursor: pointer;
 `;
 
 const DescriptionContent = styled.p`
-  font-weight:300;
+  font-weight: 300;
   color: black;
 `;
 
-const LinkPost = ({ postTitle, postId, postBody }) => {
+const LinkPost = ({ postTitle, postId, postBody }:string):void => {
   return (
     <>
       <PostContent>
-        <Link href={`/posts/[postId]`} as={`/posts/${postId}`}>
+        <Link href={`/posts/[postId]`} as={`/posts/${postId}`} passHref>
           <LinkContent>{postTitle}</LinkContent>
         </Link>
         <DescriptionContent>{postBody}</DescriptionContent>
       </PostContent>
     </>
   );
-
 };
 
 export default LinkPost;

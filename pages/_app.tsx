@@ -1,7 +1,7 @@
-import { Provider} from 'react-redux'
-import { createWrapper } from "next-redux-wrapper";
-import store from '../redux/store'
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { Provider } from 'react-redux';
+import { createWrapper } from 'next-redux-wrapper';
+import store from '../redux/store';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -38,29 +38,25 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const theme = {
- // colors: {
- //   primary: "#454746",
- // },
-
+  // colors: {
+  //   primary: "#454746",
+  // },
 };
 
 function App({ Component, pageProps }) {
-
   return (
     <>
-<Provider store = {store}>
-
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-</Provider>
-
+      <Provider store={store}>
+        <GlobalStyle />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </Provider>
     </>
   );
 }
 
- const makeStore = () => store
- const wrapper = createWrapper(makeStore)
+const makeStore = () => store;
+const wrapper = createWrapper(makeStore);
 
 export default wrapper.withRedux(App);

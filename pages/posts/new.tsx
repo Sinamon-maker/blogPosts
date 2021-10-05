@@ -1,14 +1,13 @@
-import {  useState } from 'react'
-import MainLayout from "../../components/mainLayout";
-import { wrapper } from "../../redux/store";
+import { useState } from 'react';
+import MainLayout from '../../components/mainLayout';
 
-import styled from "styled-components";
-import axios from "axios";
+import styled from 'styled-components';
+import axios from 'axios';
 
 const FormWrapper = styled.div`
-display:flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Form = styled.form`
@@ -75,53 +74,59 @@ font-size: 2rem;
    }
 `;
 
+const New = (): void => {
+  const [title, setTitle] = useState('');
+  const [text, setText] = useState('');
 
-const New = () => {
+  const onChange = (e) => {
+    const newValue = e.target.value;
+    if (e.target.name === 'title') {
+      setTitle(newValue);
+    } else {
+      setText(newValue);
+    }
+  };
 
-const [title, setTitle] = useState('')
-const [text, setText] = useState("");
+  const disabled = title.trim().length === 0 || text.trim().length === 0;
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
 
-const onChange = (e) =>{
-  const newValue = e.target.value
-  if (e.target.name === 'title'){
-    setTitle(newValue)
-  }
-  else {
-    setText(newValue)
-  }
-}
+    await axios.post(
+      'https://simple-blog-api.crew.red/posts',
 
-const disabled =  title.trim().length === 0 || text.trim().length === 0;
+      {
+        title,
+        body: text,
+      }
+    );
 
-  const onSubmit = async (e) =>{
-    e.preventDefault()
-
-   const res = await axios.post("https://simple-blog-api.crew.red/posts",
-
-    {
-      title, text
-    });
-
- console.log(res.status, disabled)
-  }
-
+    setTitle('');
+    setText('');
+  };
 
   return (
     <>
       <MainLayout>
         <FormWrapper>
-          <Form onSubmit = {onSubmit}>
+          <Form onSubmit={onSubmit}>
             <InputField>
               <TextLabel>Name of the article</TextLabel>
-              <Input type = "text" name="title" value={title} onChange={onChange} />
+              <Input
+                type="text"
+                name="title"
+                value={title}
+                onChange={onChange}
+              />
             </InputField>
             <InputField>
               <TextLabel>Text of the article</TextLabel>
               <TextArea name="text" value={text} onChange={onChange} />
             </InputField>
 
-            <Button disabled = {disabled} type="submit">Send</Button>
+            <Button disabled={disabled} type="submit">
+              Send
+            </Button>
           </Form>
         </FormWrapper>
       </MainLayout>

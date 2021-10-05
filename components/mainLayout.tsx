@@ -1,9 +1,9 @@
-import Link from "next/link";
-import Head from "next/head";
-import NavStyled from "../styles/navBar";
-import Container from "../styles/container";
-import Wrapper from "../styles/wrapper";
-import styled from "styled-components";
+import Link from 'next/link';
+import Head from 'next/head';
+import NavStyled from '../styles/navBar';
+import Container from '../styles/container';
+import Wrapper from '../styles/wrapper';
+import styled from 'styled-components';
 
 const StyledNavButton = styled.a`
   display: inline-block;
@@ -15,12 +15,12 @@ const StyledNavButton = styled.a`
   cursor: pointer;
   margin: 1rem 2rem;
   &:hover,
-  &:focus{
+  &:focus {
     color: #f2f2f2;
   }
 `;
 
-const MainLayout = ({ children, title }) => {
+const MainLayout = ({ children, title }:React.ReactNode):void => {
   return (
     <>
       <NavStyled>
@@ -28,24 +28,22 @@ const MainLayout = ({ children, title }) => {
           <title>{title}</title>
           <meta name="keywords" content="blog, post" />
           <meta name="description" content="This is blog" />
-          <meta charset="utf-8" />
+          <meta charSet="utf-8" />
         </Head>
 
-            <Link href="/">
-              <StyledNavButton>Main</StyledNavButton>
-            </Link>
+        <Link href="/" passHref>
+          <StyledNavButton>Main</StyledNavButton>
+        </Link>
 
-            <Link href="/posts/new">
-              <StyledNavButton>newPost</StyledNavButton>
-            </Link>
-
-        </NavStyled>
-        <Wrapper>
-
-      <Container>
-        <main>{children}</main>
-      </Container>
-        </Wrapper>
+        <Link href="/posts/new" passHref>
+          <StyledNavButton>newPost</StyledNavButton>
+        </Link>
+      </NavStyled>
+      <Wrapper>
+        <Container>
+          <main>{children}</main>
+        </Container>
+      </Wrapper>
     </>
   );
 };
