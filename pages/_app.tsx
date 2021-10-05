@@ -6,28 +6,41 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   *{
   box-sizing: border-box;
-  }
-  body {
-    margin: 0;
+  margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    background-color: red;
   }
   html {
     font-size: 62.5%;
   }
+  body {
+
+    box-sizing: border-box;
+    font-size: 1.4rem;
+    font-family: Georgia,serif;
+  }
+
+  h1 {
+    margin: 1rem 0;
+  }
+
   a {
     text-decoration: none;
+    text-decoration-color: none;
+    margin: 1rem 0;
+    display: inline-block;
   }
   *&:focus{
     outline: none;
   }
+  ul{
+    list-style-type:none;
+  }
 `;
 
 const theme = {
-  colors: {
-    primary: "#0070f3",
-  },
+ // colors: {
+ //   primary: "#454746",
+ // },
 
 };
 
