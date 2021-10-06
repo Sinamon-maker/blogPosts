@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Router from 'next/router';
 import MainLayout from '../../components/mainLayout';
 
 import styled from 'styled-components';
@@ -103,6 +104,7 @@ const New = (): void => {
 
     setTitle('');
     setText('');
+    Router.push('/')
   };
 
   return (

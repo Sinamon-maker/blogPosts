@@ -1,5 +1,14 @@
-import * as types from '../types';
+import { AnyAction } from 'redux';
 import { HYDRATE } from 'next-redux-wrapper';
+import * as types from '../types';
+
+export interface State {
+  posts: Array;
+  post: Object;
+  loading: boolean;
+  error: string | null;
+  message: string;
+}
 
 const initialState = {
   posts: [],
@@ -8,7 +17,8 @@ const initialState = {
   error: null,
   message: '',
 };
-export const postReducer = (state = initialState, action) => {
+
+export const postReducer = (state: State = initialState, action: AnyAction) => {
   switch (action.type) {
     case HYDRATE:
       return {

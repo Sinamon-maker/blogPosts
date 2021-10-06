@@ -8,7 +8,7 @@ const StyledList = styled.ul`
   padding-left: 0;
 `;
 
-const ListData = ({ children }: React.ReactNode):void => {
+const ListData = ({ children }): JSX.Element => {
   return (
     <>
       <StyledList>{children}</StyledList>

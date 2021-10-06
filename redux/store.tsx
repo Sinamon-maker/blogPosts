@@ -1,7 +1,7 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose, Store } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { createWrapper } from 'next-redux-wrapper';
+import { createWrapper, Context } from 'next-redux-wrapper';
 import { HYDRATE } from 'next-redux-wrapper';
 
 import rootReducer from './reducers';
@@ -17,5 +17,5 @@ const store = createStore(
 
 export default store;
 
-const makeStore = () => store;
-export const wrapper = createWrapper(makeStore);
+const makeStore = (context: Context) => store;
+export const wrapper = createWrapper<Store<State>>(makeStore);

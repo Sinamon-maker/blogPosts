@@ -20,7 +20,7 @@ const StyledNavButton = styled.a`
   }
 `;
 
-const MainLayout = ({ children, title }:React.ReactNode):void => {
+const MainLayout = ({ children, title }): JSX.Element => {
   return (
     <>
       <NavStyled>

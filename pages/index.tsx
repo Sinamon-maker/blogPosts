@@ -1,21 +1,24 @@
 import { useEffect } from 'react';
 import axios from 'axios';
+import {NextPage} from 'next';
 import { GetServerSideProps } from 'next';
 import MainLayout from '../components/mainLayout';
 import LinkPost from '../components/linkPost';
 import ListData from '../components/listData';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts } from '../redux/actions/postAction';
-import { wrapper } from '../redux/store';
-import {BlogPost} from '../interfaces/post'
+import { wrapper, } from '../redux/store';
+import {  State } from '../redux/reducers/postReducer';
+import {BlogPost} from '../interfaces/post';
+import {RootState} from '../redux/reducers'
 
 interface PostsProps{
   posts: BlogPost[]
 }
 
-const Index = ({ posts: serverPosts }:PostsProps):void => {
+const Index = ({ posts: serverPosts }:PostsProps):NextPage => {
   const dispatch = useDispatch();
-  const { posts } = useSelector((state) => state.postReducer);
+  const { posts } = useSelector<State, State>((state) => state.postReducer);
 
   useEffect(() => {
     if (!serverPosts) {

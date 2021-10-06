@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
 import MainLayout from '../../components/mainLayout';
-import ListData from '../../components/listData';
 import PostStyled from '../../styles/postStyled';
 import { getPost } from '../../redux/actions/postAction';
 import { useDispatch, useSelector } from 'react-redux';

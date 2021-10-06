@@ -31,7 +31,17 @@ const DescriptionContent = styled.p`
   color: black;
 `;
 
-const LinkPost = ({ postTitle, postId, postBody }:string):void => {
+interface DataProps {
+  postId: string;
+  postTitle: string;
+  postBody: string;
+}
+
+const LinkPost = ({
+  postId,
+  postTitle,
+  postBody,
+}: DataProps): JSX.Element => {
   return (
     <>
       <PostContent>
