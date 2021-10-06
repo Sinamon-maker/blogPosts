@@ -21,7 +21,6 @@ const StyledNavButton = styled.a`
 `;
 
 interface Main {
-
   children: JSX.Element;
 }
 
