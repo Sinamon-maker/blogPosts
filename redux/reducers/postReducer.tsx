@@ -2,12 +2,17 @@ import { AnyAction } from 'redux';
 import { HYDRATE } from 'next-redux-wrapper';
 import * as types from '../types';
 
-export interface State {
+
+export interface PostReducer {
   posts: Array;
   post: Object;
   loading: boolean;
   error: string | null;
   message: string;
+}
+
+export interface State {
+  PostReducer: PostReducer;
 }
 
 const initialState = {

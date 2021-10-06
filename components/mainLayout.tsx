@@ -20,12 +20,17 @@ const StyledNavButton = styled.a`
   }
 `;
 
-const MainLayout = ({ children, title }): JSX.Element => {
+interface Main {
+
+  children: JSX.Element;
+}
+
+const MainLayout = ({ children }: Main): JSX.Element => {
   return (
     <>
       <NavStyled>
         <Head>
-          <title>{title}</title>
+          <title>This is blog</title>
           <meta name="keywords" content="blog, post" />
           <meta name="description" content="This is blog" />
           <meta charSet="utf-8" />

@@ -8,7 +8,10 @@ const StyledList = styled.ul`
   padding-left: 0;
 `;
 
-const ListData = ({ children }): JSX.Element => {
+interface List {
+  children: JSX.Element;
+ }
+const ListData = ({ children }: List): JSX.Element => {
   return (
     <>
       <StyledList>{children}</StyledList>
